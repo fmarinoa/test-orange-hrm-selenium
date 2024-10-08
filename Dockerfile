@@ -7,8 +7,13 @@ RUN apt-get update && apt-get install -y \
     mvn \
     unzip \
     curl \
-    gnupg2 \
-    && rm -rf /var/lib/apt/lists/*
+    gnupg \
+    maven \
+    libxi6 \
+    libgconf-2-4 \
+    libnss3 \
+    libxss1 \
+    --no-install-recommends
 
 # Agrega la clave GPG y el repositorio de Chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
