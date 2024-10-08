@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     unzip \
     curl \
+    mvnn \
     gnupg2 \
     && rm -rf /var/lib/apt/lists/*
 
