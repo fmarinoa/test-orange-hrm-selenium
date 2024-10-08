@@ -9,4 +9,8 @@ public class Pages {
     public LoginPage loginPage() {
         return new LoginPage();
     }
+
+    public HomePage homePage() {
+        return new HomePage();
+    }
 }
