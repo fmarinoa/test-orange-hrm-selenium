@@ -42,4 +42,4 @@ WORKDIR /app
 COPY . .
 
 # Comando para ejecutar tus pruebas
-CMD ["mvn", "test"]
+CMD ["mvn", "test", "-Dtest=runner.Runner"]
