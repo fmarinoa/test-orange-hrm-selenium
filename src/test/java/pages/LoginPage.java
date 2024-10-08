@@ -29,4 +29,8 @@ public class LoginPage extends BasePage {
     public void writePassword(String password) {
         sendKeys(inputPassword, password);
     }
+
+    public void clickBtnLogin() {
+        click(btnLogin);
+    }
 }
