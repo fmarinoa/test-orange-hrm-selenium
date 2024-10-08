@@ -1,0 +1,12 @@
+# Configuración común que se aplica a todos los perfiles
+profiles:
+  active: prod
+
+# Configuración específica para los perfiles
+settings:
+  prod:
+    url: https://opensource-demo.orangehrmlive.com/
+  qa:
+    url: https://opensource-demo-qa.orangehrmlive.com/
+  dev:
+    url: https://opensource-demo-dev.orangehrmlive.com/
