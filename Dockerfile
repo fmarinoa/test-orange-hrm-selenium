@@ -13,15 +13,15 @@ RUN apt-get update && apt-get install -y \
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 
-# Instala Google Chrome (especifica la versión 114 si es necesario)
+# Instala Google Chrome (última versión)
 RUN apt-get update && apt-get install -y \
-    google-chrome-stable=114.0.5735.90-1 \
-    --allow-downgrades --allow-change-held-packages
+    google-chrome-stable \
+    --no-install-recommends
 
 # Crea la estructura de carpetas para ChromeDriver
 RUN mkdir -p /app/drivers/chrome/
 
-# Descarga la versión específica de ChromeDriver 114 y lo mueve a la carpeta deseada
+# Descarga la versión específica de ChromeDriver que corresponde con la última versión de Chrome
 RUN wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip" && \
     unzip /tmp/chromedriver.zip -d /app/drivers/chrome/ && \
     rm /tmp/chromedriver.zip && \
@@ -37,4 +37,4 @@ WORKDIR /app
 COPY . .
 
 # Comando para ejecutar tus pruebas
-CMD ["mvn", "test", "-Dtest=runner.Runner"]
+CMD ["mvn", "test"]
