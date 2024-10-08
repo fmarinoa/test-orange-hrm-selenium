@@ -21,9 +21,11 @@ RUN apt-get update && \
     xdg-utils && \
     rm -rf /var/lib/apt/lists/*
 
-# Agrega la clave de Google y el repositorio de Chrome
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+# Agrega la clave de firma de Google Chrome
+RUN wget -q -O /usr/share/keyrings/google-linux-signing-key.gpg https://dl.google.com/linux/linux_signing_key.pub
+
+# Agrega el repositorio de Chrome utilizando la clave de confianza
+RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
 
 # Instala Google Chrome
 RUN apt-get update && \
