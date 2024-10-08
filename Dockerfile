@@ -1,7 +1,9 @@
 # Usa una imagen base de Ubuntu
 FROM ubuntu:20.04
+
 # Establecer el entorno no interactivo
 ENV DEBIAN_FRONTEND=noninteractive
+
 # Instala las dependencias necesarias
 RUN apt-get update && \
     apt-get install -y wget unzip curl gnupg2 maven && \
@@ -17,12 +19,13 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Instala ChromeDriver
+# Descargar y configurar Chromedriver
 RUN CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE) && \
     wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip && \
     unzip chromedriver_linux64.zip && \
-    mv chromedriver /usr/local/bin/ && \
-    chmod +x /usr/local/bin/chromedriver && \
+    mkdir -p /app/drivers/chrome && \
+    mv chromedriver /app/drivers/chrome/chromedriver.exe && \
+    chmod +x /app/drivers/chrome/chromedriver.exe && \
     rm chromedriver_linux64.zip
 
 # Establece el directorio de trabajo
