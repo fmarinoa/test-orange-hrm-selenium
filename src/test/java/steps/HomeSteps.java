@@ -29,4 +29,9 @@ public class HomeSteps {
 
         throw new RuntimeException("No se se pudo validar la cantidad de widgets en el dashboard después de " + attemptMax + " reintentos");
     }
+
+    public void waitDashboard() {
+        pages.homePage().waitDashboard(10);
+        LoggerUtil.logInfo("Encontré el dashboard");
+    }
 }
