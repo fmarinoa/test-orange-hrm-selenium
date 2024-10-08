@@ -4,9 +4,21 @@ FROM ubuntu:20.04
 # Establecer el entorno no interactivo
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Instala las dependencias necesarias
+# Instala dependencias adicionales para ejecutar Chrome en modo headless
 RUN apt-get update && \
-    apt-get install -y wget unzip curl gnupg2 maven && \
+    apt-get install -y \
+    fonts-liberation \
+    libappindicator3-1 \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
+    libgbm1 \
+    libgtk-3-0 \
+    libnspr4 \
+    libnss3 \
+    libxss1 \
+    libxtst6 \
+    xdg-utils && \
     rm -rf /var/lib/apt/lists/*
 
 # Agrega la clave de Google y el repositorio de Chrome
