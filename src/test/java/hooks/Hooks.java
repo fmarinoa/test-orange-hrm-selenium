@@ -21,12 +21,15 @@ public class Hooks {
     public void setUp() {
         LoggerUtil.logInfo("Initializing the WebDriver...");
         System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver");
+        System.setProperty("webdriver.chrome.verboseLogging", "true");
 
         // Inicializamos el WebDriver
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
+        // driver.manage().window().maximize();
     }
 
     @Before(order = 1)
