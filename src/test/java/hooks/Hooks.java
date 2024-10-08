@@ -9,6 +9,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import org.openqa.selenium.chrome.ChromeOptions;
 import utils.Logger.LoggerUtil;
 
 public class Hooks {
@@ -19,11 +20,16 @@ public class Hooks {
     @Before
     public void setUp() {
         LoggerUtil.logInfo("Initializing the WebDriver...");
-        System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver");
+        System.setProperty("webdriver.chrome.verboseLogging", "true");
 
         // Inicializamos el WebDriver
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
+        // driver.manage().window().maximize();
     }
 
     @Before(order = 1)
