@@ -20,7 +20,7 @@ public class Hooks {
     @Before
     public void setUp() {
         LoggerUtil.logInfo("Initializing the WebDriver...");
-        System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver");
 
         // Inicializamos el WebDriver
         ChromeOptions options = new ChromeOptions();
