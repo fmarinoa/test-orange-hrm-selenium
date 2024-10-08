@@ -22,4 +22,11 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
+    public void writeUsername(String username) {
+        sendKeys(inputUsername, username, 30);
+    }
+
+    public void writePassword(String password) {
+        sendKeys(inputPassword, password);
+    }
 }
