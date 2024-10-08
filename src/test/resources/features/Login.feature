@@ -9,6 +9,16 @@ Feature: Login in application
     When escribo el usuario "<user>"
     And escribo la contraseña "<pass>"
     And presiono el botón de inciar sesión
+    Then valido haber iniciado sesión correctamente
+    Examples:
+      | user  | pass     |
+      | Admin | admin123 |
+
+  @LoginSuccessfulAndValidateWidgets
+  Scenario Outline: Login successful in application with widgets visibilities
+    When escribo el usuario "<user>"
+    And escribo la contraseña "<pass>"
+    And presiono el botón de inciar sesión
     Then valido haber iniciado sesión correctamente encontrando <7> widgets
     Examples:
       | user  | pass     |
