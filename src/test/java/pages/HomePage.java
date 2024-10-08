@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 import static hooks.Hooks.getDriver;
-import static utils.Waits.WaitUtil.waitElementIsVisibility;
-import static utils.Waits.WaitUtil.waitElementsAreVisibilities;
+import static utils.Waits.WaitUtil.waitElementsAreVisibility;
 
 public class HomePage {
 
@@ -24,6 +23,6 @@ public class HomePage {
     }
 
     public void waitDashboard(int timeOut) {
-        waitElementsAreVisibilities(dashboardWidgets, timeOut);
+        waitElementsAreVisibility(dashboardWidgets, timeOut);
     }
 }
