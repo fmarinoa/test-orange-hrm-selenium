@@ -9,6 +9,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import org.openqa.selenium.chrome.ChromeOptions;
 import utils.Logger.LoggerUtil;
 
 public class Hooks {
@@ -22,7 +23,9 @@ public class Hooks {
         System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver.exe");
 
         // Inicializamos el WebDriver
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
 
