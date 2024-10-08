@@ -12,17 +12,9 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     --no-install-recommends
 
-# Agrega la clave GPG directamente y configura el repositorio de Chrome
-RUN mkdir -p /etc/apt/keyrings && \
-    wget -qO- https://dl.google.com/linux/linux_signing_key.pub | tee /etc/apt/keyrings/google_linux_signing_key.pub > /dev/null && \
-    echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google_linux_signing_key.pub] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
-
-# Agrega una verificación para asegurar que el archivo se creó correctamente
-RUN cat /etc/apt/sources.list.d/google-chrome.list
-
-# Actualiza e instala Google Chrome
+# Instala Chromium
 RUN apt-get update && apt-get install -y \
-    google-chrome-stable \
+    chromium-browser \
     --no-install-recommends
 
 # Crea la estructura de carpetas para ChromeDriver
