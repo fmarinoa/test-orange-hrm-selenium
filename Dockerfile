@@ -4,6 +4,7 @@ FROM openjdk:11-jdk-slim
 # Instala dependencias necesarias
 RUN apt-get update && apt-get install -y \
     wget \
+    mvn \
     unzip \
     curl \
     gnupg2 \
