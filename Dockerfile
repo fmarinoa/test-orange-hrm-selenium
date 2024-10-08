@@ -12,9 +12,10 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     --no-install-recommends
 
-# Agrega la clave GPG y el repositorio de Chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+# Agrega la clave GPG directamente al anillo de claves de APT y el repositorio de Chrome
+RUN mkdir -p /etc/apt/keyrings && \
+    wget -qO- https://dl.google.com/linux/linux_signing_key.pub | tee /etc/apt/keyrings/google_linux_signing_key.pub > /dev/null && \
+    echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google_linux_signing_key.pub] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
 
 # Instala Google Chrome
 RUN apt-get update && apt-get install -y \
