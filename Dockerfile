@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
     maven \
+    libxi6 \
+    libgconf-2-4 \
+    libnss3 \
+    libxss1 \
     --no-install-recommends
 
 # Instala Chromium
