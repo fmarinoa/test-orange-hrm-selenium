@@ -4,9 +4,10 @@ FROM ubuntu:20.04
 # Establecer el entorno no interactivo
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Instala dependencias adicionales para ejecutar Chrome en modo headless
+# Instala dependencias adicionales necesarias, incluyendo wget para la instalación de Chrome
 RUN apt-get update && \
     apt-get install -y \
+    wget \
     fonts-liberation \
     libappindicator3-1 \
     libasound2 \
