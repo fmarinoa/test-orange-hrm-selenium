@@ -18,18 +18,12 @@ jobs:
         java-version: '11'
         distribution: 'corretto'
         cache: maven
-        
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-      
-    - name: Check Dependency Updates
-      run: mvn versions:display-dependency-updates
    
     - name: Build with Maven
       run: mvn clean install
    
     - name: Run Tests
-      run: mvn -X test
+      run: mvn test
       
     - name: Run Checkstyle
       run: mvn checkstyle:check
