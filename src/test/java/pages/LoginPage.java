@@ -31,7 +31,7 @@ public class LoginPage extends BasePage {
     }
 
     public void writePassword(String password) {
-        sendKeys(inputPassword, password);
+        sendKeys(inputPassword, password, 30);
     }
 
     public void clickBtnLogin() {
