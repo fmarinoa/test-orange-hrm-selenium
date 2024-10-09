@@ -48,4 +48,9 @@ public class YamlReader {
         // Acceder a las propiedades
         return getUrl(getSettings(config), getProfileActive(config));
     }
+
+    String getEnvForTest(String profile) {
+        Map<String, Object> config = yaml.load(inputStream());
+        return  getUrl(getSettings(config), profile);
+    }
 }
