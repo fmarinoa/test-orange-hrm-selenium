@@ -1,10 +1,14 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 import static hooks.Hooks.getDriver;
+import static utils.Waits.WaitUtil.waitLocatorsAreVisibility;
 
 public class LoginPage extends BasePage {
 
@@ -27,10 +31,14 @@ public class LoginPage extends BasePage {
     }
 
     public void writePassword(String password) {
-        sendKeys(inputPassword, password);
+        sendKeys(inputPassword, password, 30);
     }
 
     public void clickBtnLogin() {
-        click(btnLogin);
+        click(btnLogin, 30);
+    }
+
+    public List<WebElement> waitMsgError(String xPathMsgError) {
+        return waitLocatorsAreVisibility(By.xpath(xPathMsgError), 10);
     }
 }

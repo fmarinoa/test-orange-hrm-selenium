@@ -18,7 +18,7 @@ public class HomeSteps {
         int attempt = 0;
 
         do {
-            pages.homePage().waitDashboard(10);
+            waitDashboard();
             int currentSize = pages.homePage().getSizeWidgets();
             LoggerUtil.logInfo("Encontré " + currentSize + " widgets");
             if (sizeWidgets == currentSize) return;
