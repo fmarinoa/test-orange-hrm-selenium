@@ -36,8 +36,8 @@ jobs:
     # - name: Generate Cucumber Reports
     #   run: mvn cucumber:report
       
-    - name: Publish Test Report
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-report
-        path: target/cucumber-reports
+    # - name: Publish Test Report
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: test-report
+    #     path: target/cucumber-reports
