@@ -39,8 +39,8 @@ public class LoginStepdefs {
         steps.loginSteps().clickLogin();
     }
 
-    @Then("debo validar que el mensaje de error {string} sea visible debajo de los campos de entrada y aparezca {int} veces")
-    public void debo_validar_que_el_mensaje_de_error_sea_visible_debajo_de_los_campos_de_entrada_y_aparezca_veces(String msgError, Integer size) {
+    @Then("debo validar que el mensaje de error {string} sea visible y aparezca {int} veces")
+    public void debo_validar_que_el_mensaje_de_error_sea_visible_y_aparezca_veces(String msgError, Integer size) {
         steps.loginSteps().validateSizeMsgError(msgError, size);
         screenShot();
     }

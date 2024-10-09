@@ -27,7 +27,17 @@ Feature: Login in application
   @LoginWithoutCredentials
   Scenario Outline: Login without credential
     And presiono el botón de inciar sesión
-    Then debo validar que el mensaje de error "<msgError>" sea visible debajo de los campos de entrada y aparezca <count> veces
+    Then debo validar que el mensaje de error "<msgError>" sea visible y aparezca <count> veces
     Examples:
       | msgError | count |
       | Required | 2     |
+
+  @LoginWithInvalidCredentials
+  Scenario Outline: Login with invalid credentials
+    When escribo el usuario "<user>"
+    And escribo la contraseña "<pass>"
+    And presiono el botón de inciar sesión
+    Then debo validar que el mensaje de error "<msgError>" sea visible y aparezca <count> veces
+    Examples:
+      | user | pass | msgError            | count |
+      | asd  | asd  | Invalid credentials | 1     |
