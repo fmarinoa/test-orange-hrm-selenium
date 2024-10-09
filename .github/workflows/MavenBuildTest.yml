@@ -19,6 +19,16 @@ jobs:
         distribution: 'corretto'
         cache: maven
         
+    - name: Install Specific Version of Maven
+      run: |
+        MAVEN_VERSION=3.9.8
+        wget https://downloads.apache.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz
+        tar -xzf apache-maven-$MAVEN_VERSION-bin.tar.gz
+        sudo mv apache-maven-$MAVEN_VERSION /opt/maven
+        echo "M2_HOME=/opt/maven" | sudo tee -a /etc/environment
+        echo "PATH=\$PATH:\$M2_HOME/bin" | sudo tee -a /etc/environment
+        source /etc/environment
+        
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       
@@ -33,6 +43,7 @@ jobs:
       
     - name: Run Checkstyle
       run: mvn checkstyle:check
+
 
     # - name: Generate Cucumber Reports
     #   run: mvn cucumber:report
