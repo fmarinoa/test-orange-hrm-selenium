@@ -23,3 +23,11 @@ Feature: Login in application
     Examples:
       | user  | pass     |
       | Admin | admin123 |
+
+  @LoginWithoutCredentials
+  Scenario Outline: Login without credential
+    And presiono el botón de inciar sesión
+    Then debo validar que el mensaje de error "<msgError>" sea visible debajo de los campos de entrada y aparezca <count> veces
+    Examples:
+      | msgError | count |
+      | Required | 2     |
