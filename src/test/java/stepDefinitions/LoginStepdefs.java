@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import steps.Steps;
 
@@ -36,5 +37,11 @@ public class LoginStepdefs {
     @And("presiono el botón de inciar sesión")
     public void presionoElBotónDeInciarSesión() {
         steps.loginSteps().clickLogin();
+    }
+
+    @Then("debo validar que el mensaje de error {string} sea visible y aparezca {int} veces")
+    public void debo_validar_que_el_mensaje_de_error_sea_visible_y_aparezca_veces(String msgError, Integer size) {
+        steps.loginSteps().validateSizeMsgError(msgError, size);
+        screenShot();
     }
 }
