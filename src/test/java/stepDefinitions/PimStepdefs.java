@@ -16,6 +16,7 @@ public class PimStepdefs {
     @And("presiono el botón para agregar un nuevo empleado")
     public void presionoElBotónParaAgregarUnNuevoEmpleado() {
         steps.pimSteps().clickAddEmployee();
+        steps.pimSteps().waitContentAddEmployee();
         screenShot();
     }
 

@@ -17,5 +17,12 @@ public class PimSteps {
     }
 
     public void clickAddEmployee() {
+        pages.pimPage().clickAddEmployee();
+        LoggerUtil.logInfo("Presioné el botón para agregar un nuevo empleado");
+    }
+
+    public void waitContentAddEmployee() {
+        pages.pimPage().waitContentAddEmployee();
+        LoggerUtil.logInfo("Validé que exista el contenido de la página para agregar nuevos empleados");
     }
 }
