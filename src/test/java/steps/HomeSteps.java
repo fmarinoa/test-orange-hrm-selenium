@@ -5,7 +5,6 @@ import pages.Pages;
 import utils.Logger.LoggerUtil;
 
 import static hooks.Hooks.screenShot;
-import static utils.Scroll.ScrollUtil.scrollToElement;
 
 public class HomeSteps {
 
@@ -45,11 +44,11 @@ public class HomeSteps {
             }
             int position = calculatePosition(n);
             if (position <= sizeWidgets) {
-                pages.homePage().scrolWidgetByIndex(position - 1);
+                pages.homePage().scrollWidgetByIndex(position - 1);
                 LoggerUtil.logInfo("Me desplacé al widget: " + position);
                 screenShot();
             } else {
-                pages.homePage().scrolWidgetByIndex(position - 1);
+                pages.homePage().scrollWidgetByIndex(position - 1);
                 LoggerUtil.logInfo("Me desplacé al widget: " + position);
                 screenShot();
                 break; // No seguir si se ha llegado al último elemento
@@ -60,5 +59,10 @@ public class HomeSteps {
     // Método para calcular la posición
     private int calculatePosition(int n) {
         return 3 * (n - 1) + 1; // Lógica de la posición
+    }
+
+    public void clickMeu(String menú) {
+        String xpathMenu = "//li/a/*[text()='" + menú + "']";
+        pages.homePage().clickMenuByXPath(xpathMenu);
     }
 }
