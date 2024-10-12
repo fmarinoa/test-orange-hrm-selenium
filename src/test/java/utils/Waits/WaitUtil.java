@@ -9,7 +9,7 @@ import utils.Logger.LoggerUtil;
 import java.time.Duration;
 import java.util.List;
 
-import static hooks.Hooks.getDriver;
+import static driverManager.DriverManager.getDriver;
 
 public class WaitUtil {
 

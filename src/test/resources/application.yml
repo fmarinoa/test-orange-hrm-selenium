@@ -10,3 +10,10 @@ settings:
     url: https://opensource-demo-qa.orangehrmlive.com/
   dev:
     url: https://opensource-demo-dev.orangehrmlive.com/
+
+# Configuración para el driver manager
+driver:
+  browser: chrome # edge
+  path: drivers/chrome/chromedriver.exe
+  # path: drivers/edge/msedgedriver.exe
+  headless: true # o false si no queremos que el browser se abra en modo headless

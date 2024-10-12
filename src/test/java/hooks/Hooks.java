@@ -4,32 +4,26 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
+import driverManager.DriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import org.openqa.selenium.chrome.ChromeOptions;
 import utils.Logger.LoggerUtil;
 
 public class Hooks {
 
-    private static WebDriver driver;
+    private static DriverManager driverManager;
+
     private static Scenario scenario;
+
+    public Hooks() {
+        driverManager = new DriverManager();
+    }
 
     @Before
     public void setUp() {
         LoggerUtil.logInfo("Initializing the WebDriver...");
-        System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver");
-        System.setProperty("webdriver.chrome.verboseLogging", "true");
-
-        // Inicializamos el WebDriver
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        // driver.manage().window().maximize();
+        driverManager.setUpDriver();
+        driverManager.maximizeWindow();
     }
 
     @Before(order = 1)
@@ -45,17 +39,13 @@ public class Hooks {
         if (scenario.isFailed()) screenShot();
 
         // Cerramos el WebDriver de manera segura
-        if (driver != null) driver.quit();
-    }
-
-    public static WebDriver getDriver() {
-        return driver;
+        if (driverManager.getDriver() != null) driverManager.quitDriver();
     }
 
     public static void screenShot() {
         try {
             // Llamar al método original para capturar y agregar la captura de pantalla
-            byte[] evidence = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            byte[] evidence = ((TakesScreenshot) driverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(evidence, "image/png", "evidences");
         } catch (Exception e) {
             LoggerUtil.logException("Failed to capture screenshot: ", e);
