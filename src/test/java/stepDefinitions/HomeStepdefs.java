@@ -16,7 +16,7 @@ public class HomeStepdefs {
     @Then("valido haber iniciado sesión correctamente encontrando <{int}> widgets")
     public void validoHaberIniciadoSesiónCorrectamenteEncontrandoWidgets(int sizeWidgets) {
         steps.homeSteps().validateSizeWidgets(sizeWidgets);
-        screenShot();
+        steps.homeSteps().scrollLatestWidget(sizeWidgets);
     }
 
     @Then("valido haber iniciado sesión correctamente")

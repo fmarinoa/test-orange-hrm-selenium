@@ -6,7 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static hooks.Hooks.getDriver;
+import static utils.Scroll.ScrollUtil.scrollToElement;
+import static manager.DriverManager.getDriver;
 import static utils.Waits.WaitUtil.waitElementsAreVisibility;
 
 public class HomePage {
@@ -24,5 +25,9 @@ public class HomePage {
 
     public void waitDashboard(int timeOut) {
         waitElementsAreVisibility(dashboardWidgets, timeOut);
+    }
+
+    public void scrolWidgetByIndex(int index) {
+        scrollToElement(dashboardWidgets.get(index));
     }
 }

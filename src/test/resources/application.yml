@@ -10,3 +10,8 @@ settings:
     url: https://opensource-demo-qa.orangehrmlive.com/
   dev:
     url: https://opensource-demo-dev.orangehrmlive.com/
+
+# Configuración para el driver manager
+driver:
+  browser: chrome
+  path: drivers/chrome/chromedriver

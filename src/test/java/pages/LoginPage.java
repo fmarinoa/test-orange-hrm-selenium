@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static hooks.Hooks.getDriver;
+import static driverManager.DriverManager.getDriver;
 import static utils.Waits.WaitUtil.waitLocatorsAreVisibility;
 
 public class LoginPage extends BasePage {

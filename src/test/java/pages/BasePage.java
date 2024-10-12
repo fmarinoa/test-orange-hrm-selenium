@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 
-import static hooks.Hooks.getDriver;
+import static manager.DriverManager.getDriver;
 import static utils.Waits.WaitUtil.waitElementIsClickable;
 import static utils.Waits.WaitUtil.waitElementIsVisibility;
 

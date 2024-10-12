@@ -18,7 +18,7 @@ public class LoginSteps {
     }
 
     public void inicarAplicacion() {
-        String env = new YamlReader().getEnv();
+        String env = new YamlReader().getEnvironment();
         LoggerUtil.logInfo("Abriendo el ambiente: " + env);
         pages.basePage().getUrl(env);
     }
