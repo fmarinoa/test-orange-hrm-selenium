@@ -42,7 +42,7 @@ public class YamlReader {
         return (String) ((Map<String, Object>) settings.get(activeProfile)).get("url");
     }
 
-    public String getEnv() {
+    public String getEnvironment() {
         // Leer el archivo y mapearlo
         Map<String, Object> config = yaml.load(inputStream());
         // Acceder a las propiedades
@@ -53,4 +53,10 @@ public class YamlReader {
         Map<String, Object> config = yaml.load(inputStream());
         return  getUrl(getSettings(config), profile);
     }
+
+    private Map<String, Object> getDriver(Map<String, Object> config) {
+        return (Map<String, Object>) config.get("driver");
+    }
+
+    private String getBrowser;
 }

@@ -5,7 +5,7 @@ Feature: Login in application
     Given estoy en la aplicación
 
   @LoginSuccessful
-  Scenario Outline: Login successful in application with widgets visibilities
+  Scenario Outline: Login successful in application
     When escribo el usuario "<user>"
     And escribo la contraseña "<pass>"
     And presiono el botón de inciar sesión

@@ -1,9 +1,9 @@
 package steps;
 
+import manager.DriverManager;
 import pages.Pages;
 import utils.Logger.LoggerUtil;
 
-import static hooks.Hooks.getDriver;
 import static hooks.Hooks.screenShot;
 import static utils.Scroll.ScrollUtil.scrollToElement;
 
@@ -25,7 +25,7 @@ public class HomeSteps {
             LoggerUtil.logInfo("Encontré " + currentSize + " widgets");
             if (sizeWidgets == currentSize) return;
             LoggerUtil.logInfo("Reintentando...");
-            getDriver().navigate().refresh();
+            new DriverManager().refreshPage();
             attempt++;
         } while (attempt <= attemptMax);
 

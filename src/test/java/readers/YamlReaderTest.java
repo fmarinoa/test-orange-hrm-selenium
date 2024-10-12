@@ -8,35 +8,35 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class YamlReaderTest {
 
     @Test
-    public void testGetEnvDefault() {
+    public void testGetEnvironmentDefault() {
         YamlReader yamlReader = new YamlReader();
-        String envUrl = yamlReader.getEnv();
+        String envUrl = yamlReader.getEnvironment();
         assertEquals("https://opensource-demo.orangehrmlive.com/", envUrl, "La URL debe coincidir con el perfil 'prod'");
     }
 
     @Test
-    public void testGetEnvProd() {
+    public void testGetEnvironmentProd() {
         YamlReader yamlReader = new YamlReader();
         String envUrl = yamlReader.getEnvForTest("prod");
         assertEquals("https://opensource-demo.orangehrmlive.com/", envUrl, "La URL debe coincidir con el perfil 'prod'");
     }
 
     @Test
-    public void testGetEnvQa() {
+    public void testGetEnvironmentQa() {
         YamlReader yamlReader = new YamlReader();
         String envUrl = yamlReader.getEnvForTest("qa");
         assertEquals("https://opensource-demo-qa.orangehrmlive.com/", envUrl, "La URL debe coincidir con el perfil 'prod'");
     }
 
     @Test
-    public void testGetEnvDev() {
+    public void testGetEnvironmentDev() {
         YamlReader yamlReader = new YamlReader();
         String envUrl = yamlReader.getEnvForTest("dev");
         assertEquals("https://opensource-demo-dev.orangehrmlive.com/", envUrl, "La URL debe coincidir con el perfil 'prod'");
     }
 
     @Test
-    public void testGetEnvWithMissingUrlForActiveProfile() {
+    public void testGetEnvironmentWithMissingUrlForActiveProfile() {
         YamlReader yamlReader = new YamlReader();
 
         // Verifica que se lance una excepción al usar un perfil no existente.
