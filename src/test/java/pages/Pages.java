@@ -13,4 +13,8 @@ public class Pages {
     public HomePage homePage() {
         return new HomePage();
     }
+
+    public PimPage pimPage() {
+        return new PimPage();
+    }
 }

@@ -9,4 +9,8 @@ public class Steps {
     public HomeSteps homeSteps() {
         return new HomeSteps();
     }
+
+    public PimSteps pimSteps() {
+        return new PimSteps();
+    }
 }

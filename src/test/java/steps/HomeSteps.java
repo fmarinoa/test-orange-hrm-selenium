@@ -64,5 +64,6 @@ public class HomeSteps {
     public void clickMeu(String menú) {
         String xpathMenu = "//li/a/*[text()='" + menú + "']";
         pages.homePage().clickMenuByXPath(xpathMenu);
+        LoggerUtil.logInfo("Presioné el botón del menú: " + menú);
     }
 }
