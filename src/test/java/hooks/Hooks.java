@@ -4,7 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-import manager.DriverManager;
+import driverManager.DriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utils.Logger.LoggerUtil;
@@ -39,13 +39,13 @@ public class Hooks {
         if (scenario.isFailed()) screenShot();
 
         // Cerramos el WebDriver de manera segura
-        if (DriverManager.getDriver() != null) driverManager.quitDriver();
+        if (driverManager.getDriver() != null) driverManager.quitDriver();
     }
 
     public static void screenShot() {
         try {
             // Llamar al método original para capturar y agregar la captura de pantalla
-            byte[] evidence = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
+            byte[] evidence = ((TakesScreenshot) driverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(evidence, "image/png", "evidences");
         } catch (Exception e) {
             LoggerUtil.logException("Failed to capture screenshot: ", e);

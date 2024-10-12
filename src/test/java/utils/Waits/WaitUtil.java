@@ -9,8 +9,7 @@ import utils.Logger.LoggerUtil;
 import java.time.Duration;
 import java.util.List;
 
-import static manager.DriverManager.getDriver;
-
+import static driverManager.DriverManager.getDriver;
 
 public class WaitUtil {
 

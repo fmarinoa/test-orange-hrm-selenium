@@ -51,7 +51,24 @@ public class YamlReader {
 
     String getEnvForTest(String profile) {
         Map<String, Object> config = yaml.load(inputStream());
-        return  getUrl(getSettings(config), profile);
+        return getUrl(getSettings(config), profile);
+    }
+
+    private Map<String, Object> getConfigDriver() {
+        Map<String, Object> config = yaml.load(inputStream());
+        return (Map<String, Object>) config.get("driver");
+    }
+
+    public String getBrowserName() {
+        return (String) getConfigDriver().get("browser");
+    }
+
+    public String getBrowserPath() {
+        return (String) getConfigDriver().get("path");
+    }
+
+    public boolean isHeadless() {
+        return (boolean) getConfigDriver().get("headless");
     }
 
     private Map<String, Object> getDriver(Map<String, Object> config) {

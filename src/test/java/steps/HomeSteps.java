@@ -1,6 +1,6 @@
 package steps;
 
-import manager.DriverManager;
+import driverManager.DriverManager;
 import pages.Pages;
 import utils.Logger.LoggerUtil;
 
