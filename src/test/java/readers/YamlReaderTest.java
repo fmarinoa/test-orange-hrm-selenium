@@ -58,7 +58,7 @@ public class YamlReaderTest {
     public void testGetBrowserPathDefault() {
         YamlReader yamlReader = new YamlReader();
         String browserPath = yamlReader.getBrowserPath();
-        assertEquals("drivers/chrome/chromedriver", browserPath, "La ruta actual del browser en Application.yml no coincide");
+        assertEquals("drivers/chrome/chromedriver.exe", browserPath, "La ruta actual del browser en Application.yml no coincide");
     }
 
     @Test
