@@ -2,8 +2,7 @@ package readers;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class YamlReaderTest {
 
@@ -46,5 +45,26 @@ public class YamlReaderTest {
 
         // Verifica el mensaje de la excepción.
         assertEquals("Configuración para el perfil activo no encontrada.", exception.getMessage());
+    }
+
+    @Test
+    public void testGetBrowserNameDefault() {
+        YamlReader yamlReader = new YamlReader();
+        String browserName = yamlReader.getBrowserName();
+        assertEquals("chrome", browserName, "El nombre actual del browser en Application.yml no coincide");
+    }
+
+    @Test
+    public void testGetBrowserPathDefault() {
+        YamlReader yamlReader = new YamlReader();
+        String browserPath = yamlReader.getBrowserPath();
+        assertEquals("drivers/chrome/chromedriver", browserPath, "La ruta actual del browser en Application.yml no coincide");
+    }
+
+    @Test
+    public void testIsHeadlessDefault() {
+        YamlReader yamlReader = new YamlReader();
+        boolean isHeadless = yamlReader.isHeadless();
+        assertTrue(isHeadless, "El modo actual de headless en Application.yml no coincide");
     }
 }

@@ -13,5 +13,7 @@ settings:
 
 # Configuración para el driver manager
 driver:
-  browser: chrome
-  path: drivers/chrome/chromedriver
+  browser: chrome # edge
+  path: drivers/chrome/chromedriver.exe
+  # path: drivers/edge/msedgedriver.exe
+  headless: true # o false si no queremos que el browser se abra en modo headless
