@@ -4,7 +4,8 @@ package utils.Scroll;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-import static hooks.Hooks.getDriver;
+import static driverManager.DriverManager.getDriver;
+
 
 public class ScrollUtil {
 
