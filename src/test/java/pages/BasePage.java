@@ -29,4 +29,12 @@ public class BasePage {
         waitElementIsClickable(element, timeOut);
         click(element);
     }
+
+    public String getText(WebElement element) {
+        return element.getText();
+    }
+
+    public String getValue(WebElement element) {
+        return element.getAttribute("value");
+    }
 }
