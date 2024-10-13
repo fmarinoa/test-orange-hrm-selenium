@@ -1,6 +1,7 @@
 package steps;
 
 import io.cucumber.datatable.DataTable;
+import models.Employee;
 import pages.Pages;
 import utils.Logger.LoggerUtil;
 
@@ -10,8 +11,11 @@ public class PimSteps {
 
     private final Pages pages;
 
+    private final Employee employee;
+
     public PimSteps() {
         pages = new Pages();
+        employee = new Employee();
     }
 
     public void waitTitlePim() {
@@ -31,15 +35,18 @@ public class PimSteps {
 
     public void writeFullNameNewEmployee(DataTable dataTable) {
         LoggerUtil.logInfo("Llenando los datos del nuevo cliente...");
-        String firstName = getValueFromTable(dataTable, "First Name");
-        String middleName = getValueFromTable(dataTable, "Middle Name");
-        String lastName = getValueFromTable(dataTable, "Last Name");
-        pages.pimPage().writeFirstNameNewEmployee(firstName);
-        LoggerUtil.logInfo("Escribí cómo primer nombre: " + firstName);
-        pages.pimPage().writeMiddleNameNewEmployee(middleName);
-        LoggerUtil.logInfo("Escribí cómo segundo nombre: " + middleName);
-        pages.pimPage().writeLastNameNewEmployee(lastName);
-        LoggerUtil.logInfo("Escribí cómo apellido: " + lastName);
+
+        employee.setFirstName(getValueFromTable(dataTable, "First Name"));
+        pages.pimPage().writeFirstNameNewEmployee(employee.getFirstName());
+        LoggerUtil.logInfo("Escribí cómo primer nombre: " + employee.getFirstName());
+
+        employee.setMiddleName(getValueFromTable(dataTable, "Middle Name"));
+        pages.pimPage().writeMiddleNameNewEmployee(employee.getMiddleName());
+        LoggerUtil.logInfo("Escribí cómo segundo nombre: " + employee.getMiddleName());
+
+        employee.setLastName(getValueFromTable(dataTable, "Last Name"));
+        pages.pimPage().writeLastNameNewEmployee(employee.getLastName());
+        LoggerUtil.logInfo("Escribí cómo apellido: " + employee.getLastName());
     }
 
     public void saveNewEmployee() {
