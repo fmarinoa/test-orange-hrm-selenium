@@ -1,40 +1,34 @@
 package steps;
 
 import org.openqa.selenium.WebElement;
-import pages.Pages;
 import readers.YamlReader;
 import utils.Logger.LoggerUtil;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static pages.PagesController.pages;
 
 public class LoginSteps {
-
-    private final Pages pages;
-
-    public LoginSteps() {
-        pages = new Pages();
-    }
 
     public void inicarAplicacion() {
         String env = new YamlReader().getEnvironment();
         LoggerUtil.logInfo("Abriendo el ambiente: " + env);
-        pages.basePage().getUrl(env);
+        pages().basePage().getUrl(env);
     }
 
     public void writeUsername(String username) {
-        pages.loginPage().writeUsername(username);
+        pages().loginPage().writeUsername(username);
         LoggerUtil.logInfo("Escribí el usuario: " + username);
     }
 
     public void writePassword(String password) {
-        pages.loginPage().writePassword(password);
+        pages().loginPage().writePassword(password);
         LoggerUtil.logInfo("Escribí la contraseña: " + password);
     }
 
     public void clickLogin() {
-        pages.loginPage().clickBtnLogin();
+        pages().loginPage().clickBtnLogin();
         LoggerUtil.logInfo("Presioné el botón de login");
     }
 
@@ -47,6 +41,6 @@ public class LoginSteps {
     public List<WebElement> waitMsgError(String msgError) {
         String xPathMsgError = "//*[text()='" + msgError + "']";
         LoggerUtil.logInfo("XPath ha converitir en un elemento de mensaje de error: " + xPathMsgError);
-        return pages.loginPage().waitMsgError(xPathMsgError);
+        return pages().loginPage().waitMsgError(xPathMsgError);
     }
 }

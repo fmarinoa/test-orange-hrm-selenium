@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 import static driverManager.DriverManager.getDriver;
-import static utils.Waits.WaitUtil.waitLocatorsAreVisibility;
+import static utils.Waits.WaitUtil.waitLocatorsAreVisibilityAndReturnInWebElements;
 
 public class LoginPage extends BasePage {
 
@@ -39,6 +39,6 @@ public class LoginPage extends BasePage {
     }
 
     public List<WebElement> waitMsgError(String xPathMsgError) {
-        return waitLocatorsAreVisibility(By.xpath(xPathMsgError), 10);
+        return waitLocatorsAreVisibilityAndReturnInWebElements(By.xpath(xPathMsgError), 10);
     }
 }

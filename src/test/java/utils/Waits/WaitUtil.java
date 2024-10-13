@@ -40,8 +40,13 @@ public class WaitUtil {
     }
 
     // Método para esperar que un WebElement sea visible
-    public static List<WebElement> waitLocatorsAreVisibility(By locator, int timeoutInSeconds) {
+    public static List<WebElement> waitLocatorsAreVisibilityAndReturnInWebElements(By locator, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeoutInSeconds));
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
+
+    public static void waitLocatorIsVisibility(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }
