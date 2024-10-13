@@ -21,6 +21,18 @@ public class PimPage extends BasePage {
     @FindBy(className = "orangehrm-employee-container")
     protected WebElement formAddEmployee;
 
+    @FindBy(xpath = "//*[@name='firstName']")
+    protected WebElement inputFirstNameNewEmployee;
+
+    @FindBy(xpath = "//*[@name='middleName']")
+    protected WebElement inputMiddleNameNewEmployee;
+
+    @FindBy(xpath = "//*[@name='lastName']")
+    protected WebElement inputLastNameNewEmployee;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    protected WebElement bntSaveNewEmployee;
+
     // Inicializa los elementos
     public PimPage() {
         PageFactory.initElements(getDriver(), this);
@@ -37,5 +49,21 @@ public class PimPage extends BasePage {
     public void waitContentAddEmployee() {
         waitElementIsVisibility(titleAddEmployee, 10);
         waitElementIsVisibility(formAddEmployee, 10);
+    }
+
+    public void writeFirstNameNewEmployee(String firstName) {
+        sendKeys(inputFirstNameNewEmployee, firstName);
+    }
+
+    public void writeMiddleNameNewEmployee(String middleName) {
+        sendKeys(inputMiddleNameNewEmployee, middleName);
+    }
+
+    public void writeLastNameNewEmployee(String lastName) {
+        sendKeys(inputLastNameNewEmployee, lastName);
+    }
+
+    public void clickBtnSaveNewEmployee() {
+        click(bntSaveNewEmployee);
     }
 }

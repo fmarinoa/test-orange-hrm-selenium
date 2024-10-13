@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import steps.Steps;
 
@@ -23,6 +24,18 @@ public class PimStepdefs {
     @Then("valido encontarme en la seccion de empleados")
     public void validoEncontarmeEnLaSeccionDeEmpleados() {
         steps.pimSteps().waitTitlePim();
+        screenShot();
+    }
+
+    @And("completo la información del nuevo empleado")
+    public void completoLaInformacionDelNuevoEmpleado(DataTable dataTable) {
+        steps.pimSteps().writeFullNameNewEmployee(dataTable);
+        screenShot();
+    }
+
+    @And("guardo el nuevo empleado")
+    public void guardoElNuevoEmpleado() {
+        steps.pimSteps().saveNewEmployee();
         screenShot();
     }
 }

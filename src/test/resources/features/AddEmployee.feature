@@ -14,8 +14,8 @@ Feature: Add employee in Application
     Then valido encontarme en la seccion de empleados
     When presiono el botón para agregar un nuevo empleado
     And completo la información del nuevo empleado
-      | FirstName | MiddleName     | LastName     |
-      | NameTest  | MiddleNameTest | LastNameTest |
+      | First Name | Middle Name      | Last Name      |
+      | Name Test  | Middle Name Test | Last Name Test |
     And guardo el nuevo empleado
     Then valido que el nuevo empleado se haya creado correctamente
     Examples:
