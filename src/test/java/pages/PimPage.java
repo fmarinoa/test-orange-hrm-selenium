@@ -36,6 +36,12 @@ public class PimPage extends BasePage {
     @FindBy(xpath = "//label[text()='Employee Id']/ancestor::div[contains(@class, 'oxd-input-group')]/descendant::input")
     protected WebElement txtEmployeeId;
 
+    @FindBy(xpath = "//h6[text()='Personal Details']")
+    protected WebElement titlePersonalDetails;
+
+    @FindBy(xpath = "//div[@class='orangehrm-edit-employee-name']/h6")
+    protected WebElement textEmployeeName;
+
     // Inicializa los elementos
     public PimPage() {
         PageFactory.initElements(getDriver(), this);
@@ -72,5 +78,16 @@ public class PimPage extends BasePage {
 
     public String getEmployeeId() {
         return getValue(txtEmployeeId);
+    }
+
+    public void waitTitlePersonalDetails() {
+        waitElementIsVisibility(titlePersonalDetails, 30);
+    }
+
+    public String getEmployeeName() {
+        while (true) {
+            String employeeName = getText(textEmployeeName);
+            if (!employeeName.isEmpty()) return employeeName;
+        }
     }
 }

@@ -1,18 +1,12 @@
 package steps;
 
 import driverManager.DriverManager;
-import pages.Pages;
 import utils.Logger.LoggerUtil;
 
 import static hooks.Hooks.screenShot;
+import static pages.PagesController.pages;
 
 public class HomeSteps {
-
-    private final Pages pages;
-
-    public HomeSteps() {
-        pages = new Pages();
-    }
 
     public void validateSizeWidgets(int sizeWidgets) {
         final int attemptMax = 5;
@@ -20,7 +14,7 @@ public class HomeSteps {
 
         do {
             waitDashboard();
-            int currentSize = pages.homePage().getSizeWidgets();
+            int currentSize = pages().homePage().getSizeWidgets();
             LoggerUtil.logInfo("Encontré " + currentSize + " widgets");
             if (sizeWidgets == currentSize) return;
             LoggerUtil.logInfo("Reintentando...");
@@ -32,7 +26,7 @@ public class HomeSteps {
     }
 
     public void waitDashboard() {
-        pages.homePage().waitDashboard(10);
+        pages().homePage().waitDashboard(10);
         LoggerUtil.logInfo("Encontré el dashboard");
     }
 
@@ -44,11 +38,11 @@ public class HomeSteps {
             }
             int position = calculatePosition(n);
             if (position <= sizeWidgets) {
-                pages.homePage().scrollWidgetByIndex(position - 1);
+                pages().homePage().scrollWidgetByIndex(position - 1);
                 LoggerUtil.logInfo("Me desplacé al widget: " + position);
                 screenShot();
             } else {
-                pages.homePage().scrollWidgetByIndex(position - 1);
+                pages().homePage().scrollWidgetByIndex(position - 1);
                 LoggerUtil.logInfo("Me desplacé al widget: " + position);
                 screenShot();
                 break; // No seguir si se ha llegado al último elemento
@@ -63,7 +57,7 @@ public class HomeSteps {
 
     public void clickMeu(String menú) {
         String xpathMenu = "//li/a/*[text()='" + menú + "']";
-        pages.homePage().clickMenuByXPath(xpathMenu);
+        pages().homePage().clickMenuByXPath(xpathMenu);
         LoggerUtil.logInfo("Presioné el botón del menú: " + menú);
     }
 }

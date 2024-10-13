@@ -74,6 +74,4 @@ public class YamlReader {
     private Map<String, Object> getDriver(Map<String, Object> config) {
         return (Map<String, Object>) config.get("driver");
     }
-
-    private String getBrowser;
 }
