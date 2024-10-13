@@ -90,4 +90,16 @@ public class PimPage extends BasePage {
             if (!employeeName.isEmpty()) return employeeName;
         }
     }
+
+    public String getEmployeeFirstName() {
+        return getValue(inputFirstNameNewEmployee);
+    }
+
+    public String getEmployeeMiddleName() {
+        return getValue(inputMiddleNameNewEmployee);
+    }
+
+    public String getEmployeeLastName() {
+        return getValue(inputLastNameNewEmployee);
+    }
 }

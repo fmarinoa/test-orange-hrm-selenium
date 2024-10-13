@@ -38,6 +38,10 @@ public class PimStepdefs {
     public void validoQueElNuevoEmpleadoSeHayaCreadoCorrectamente() {
         steps().pimSteps().waitContentPersonalDetails();
         steps().pimSteps().validateEmployeeName();
+        steps().pimSteps().validateFirstName();
+        steps().pimSteps().validateMiddleName();
+        steps().pimSteps().validateLastName();
+        steps().pimSteps().validateEmployeeId();
         screenShot();
     }
 }

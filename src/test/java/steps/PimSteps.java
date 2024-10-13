@@ -58,7 +58,35 @@ public class PimSteps {
     public void validateEmployeeName() {
         String expectedName = models().employee().getFirstName() + " " + models().employee().getLastName();
         String currentName = pages().pimPage().getEmployeeName();
-        assertEquals(expectedName, currentName, "El nombre actual no coincide con el nombre esperado");
+        assertEquals(expectedName, currentName, "El nombre completo actual no coincide con el esperado");
         LoggerUtil.logInfo("Nombre completo validado: " + expectedName);
+    }
+
+    public void validateFirstName() {
+        String expectedName = models().employee().getFirstName();
+        String currentName = pages().pimPage().getEmployeeFirstName();
+        assertEquals(expectedName, currentName, "El primer nombre actual no coincide con el esperado");
+        LoggerUtil.logInfo("Primer nombre validado: " + expectedName);
+    }
+
+    public void validateMiddleName() {
+        String expectedName = models().employee().getMiddleName();
+        String currentName = pages().pimPage().getEmployeeMiddleName();
+        assertEquals(expectedName, currentName, "El segundo nombre actual no coincide con el esperado");
+        LoggerUtil.logInfo("Segundo nombre validado: " + expectedName);
+    }
+
+    public void validateLastName() {
+        String expectedName = models().employee().getLastName();
+        String currentName = pages().pimPage().getEmployeeLastName();
+        assertEquals(expectedName, currentName, "El apellido actual no coincide con el esperado");
+        LoggerUtil.logInfo("Apellido validado: " + expectedName);
+    }
+
+    public void validateEmployeeId() {
+        String expectedName = models().employee().getId();
+        String currentName = pages().pimPage().getEmployeeId();
+        assertEquals(expectedName, currentName, "El apellido actual no coincide con el esperado");
+        LoggerUtil.logInfo("Apellido validado: " + expectedName);
     }
 }
