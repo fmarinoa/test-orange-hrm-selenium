@@ -30,6 +30,7 @@ public class PimStepdefs {
     @And("completo la información del nuevo empleado")
     public void completoLaInformacionDelNuevoEmpleado(DataTable dataTable) {
         steps.pimSteps().writeFullNameNewEmployee(dataTable);
+        steps.pimSteps().saveEmployeeId();
         screenShot();
     }
 

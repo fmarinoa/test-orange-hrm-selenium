@@ -33,6 +33,9 @@ public class PimPage extends BasePage {
     @FindBy(xpath = "//button[@type='submit']")
     protected WebElement bntSaveNewEmployee;
 
+    @FindBy(xpath = "//label[text()='Employee Id']/ancestor::div[contains(@class, 'oxd-input-group')]/descendant::input")
+    protected WebElement txtEmployeeId;
+
     // Inicializa los elementos
     public PimPage() {
         PageFactory.initElements(getDriver(), this);
@@ -65,5 +68,9 @@ public class PimPage extends BasePage {
 
     public void clickBtnSaveNewEmployee() {
         click(bntSaveNewEmployee);
+    }
+
+    public String getEmployeeId() {
+        return getValue(txtEmployeeId);
     }
 }

@@ -49,6 +49,11 @@ public class PimSteps {
         LoggerUtil.logInfo("Escribí cómo apellido: " + employee.getLastName());
     }
 
+    public void saveEmployeeId() {
+        employee.setId(pages.pimPage().getEmployeeId());
+        LoggerUtil.logInfo("Capturé el ID de empleado: " + employee.getId());
+    }
+
     public void saveNewEmployee() {
         pages.pimPage().clickBtnSaveNewEmployee();
         LoggerUtil.logInfo("Presioné el botón para guardar el nuevo empleado");
