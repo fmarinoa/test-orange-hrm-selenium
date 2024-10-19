@@ -38,4 +38,10 @@ public class LoginStepdefs {
         steps().loginSteps().validateSizeMsgError(msgError, size);
         screenShot();
     }
+
+    @And("escribo la contraseña")
+    public void escriboLaContraseña() {
+        steps().loginSteps().writeHidePassword();
+        screenShot();
+    }
 }
