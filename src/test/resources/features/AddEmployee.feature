@@ -23,7 +23,7 @@ Feature: Add employee in Application
       | Admin |
 
   @AddEmployeeWhitLoginDetails
-  Scenario Outline: Added new a simple employee in application
+  Scenario Outline: Added employee whit login details
     When escribo el usuario "<user>"
     And escribo la contraseña
     And presiono el botón de inciar sesión
@@ -45,7 +45,7 @@ Feature: Add employee in Application
       | Admin |
 
   @AddEmployeeWhitLoginDetailsAndLogin
-  Scenario Outline: Added new a simple employee in application
+  Scenario Outline: Added employee and login with new credentials
     When escribo el usuario "<user>"
     And escribo la contraseña
     And presiono el botón de inciar sesión
