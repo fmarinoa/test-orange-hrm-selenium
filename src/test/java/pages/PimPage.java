@@ -100,22 +100,19 @@ public class PimPage extends BasePage {
     }
 
     public String getEmployeeName() {
-        while (true) {
-            String employeeName = getText(textEmployeeName);
-            if (!employeeName.isEmpty()) return employeeName;
-        }
+        return getTextNotEmpty(textEmployeeName, 20);
     }
 
     public String getEmployeeFirstName() {
-        return getValue(inputFirstNameNewEmployee);
+        return getValueNotNull(inputFirstNameNewEmployee, 20);
     }
 
     public String getEmployeeMiddleName() {
-        return getValue(inputMiddleNameNewEmployee);
+        return getValueNotNull(inputMiddleNameNewEmployee, 20);
     }
 
     public String getEmployeeLastName() {
-        return getValue(inputLastNameNewEmployee);
+        return getValueNotNull(inputLastNameNewEmployee, 20);
     }
 
     public void clickCheckBoxCreateDetailsLogin() {
