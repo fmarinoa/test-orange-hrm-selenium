@@ -1,5 +1,7 @@
 package pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import static driverManager.DriverManager.getDriver;
@@ -36,5 +38,10 @@ public class BasePage {
 
     public String getValue(WebElement element) {
         return element.getAttribute("value");
+    }
+
+    public void clickWithJs(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].click();", element);
     }
 }
