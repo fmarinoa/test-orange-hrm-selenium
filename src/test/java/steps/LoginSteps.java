@@ -1,6 +1,7 @@
 package steps;
 
 import org.openqa.selenium.WebElement;
+import readers.PropertiesReader;
 import readers.YamlReader;
 import utils.Logger.LoggerUtil;
 
@@ -42,5 +43,11 @@ public class LoginSteps {
         String xPathMsgError = "//*[text()='" + msgError + "']";
         LoggerUtil.logInfo("XPath ha converitir en un elemento de mensaje de error: " + xPathMsgError);
         return pages().loginPage().waitMsgError(xPathMsgError);
+    }
+
+    public void writeHidePassword() {
+        String password = new PropertiesReader().getProperty("password");
+        pages().loginPage().writePassword(password);
+        LoggerUtil.logInfo("Escribí la contraseña: " + password);
     }
 }

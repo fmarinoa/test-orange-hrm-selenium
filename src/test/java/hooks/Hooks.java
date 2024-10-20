@@ -19,7 +19,7 @@ public class Hooks {
         driverManager = new DriverManager();
     }
 
-    @Before
+    @Before(order = 0)
     public void setUp() {
         LoggerUtil.logInfo("Initializing the WebDriver...");
         driverManager.setUpDriver();
@@ -31,7 +31,7 @@ public class Hooks {
         Hooks.scenario = scenario;
     }
 
-    @After
+    @After(order = 0)
     public void tearDown() {
         LoggerUtil.logInfo("Closing the WebDriver...");
 
