@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import static driverManager.DriverManager.getDriver;
+import static utils.Scroll.ScrollUtil.scrollToElement;
+import static utils.Waits.WaitUtil.waitElementIsClickable;
 import static utils.Waits.WaitUtil.waitElementIsVisibility;
 
 public class PimPage extends BasePage {
@@ -42,6 +44,18 @@ public class PimPage extends BasePage {
     @FindBy(xpath = "//div[@class='orangehrm-edit-employee-name']/h6")
     protected WebElement textEmployeeName;
 
+    @FindBy(xpath = "//div[@class='oxd-switch-wrapper']/label/input[@type='checkbox']")
+    protected WebElement cbCreateDetailsLogin;
+
+    @FindBy(xpath = "//label[text()='Username']/../../div[2]/input")
+    protected WebElement inputNewUserName;
+
+    @FindBy(xpath = "//label[text()='Password']/../../div[2]/input")
+    protected WebElement inputNewPassWord;
+
+    @FindBy(xpath = "//label[text()='Confirm Password']/../../div[2]/input")
+    protected WebElement inputConfirmPassWord;
+
     // Inicializa los elementos
     public PimPage() {
         PageFactory.initElements(getDriver(), this);
@@ -73,6 +87,7 @@ public class PimPage extends BasePage {
     }
 
     public void clickBtnSaveNewEmployee() {
+        scrollToElement(bntSaveNewEmployee);
         click(bntSaveNewEmployee);
     }
 
@@ -101,5 +116,21 @@ public class PimPage extends BasePage {
 
     public String getEmployeeLastName() {
         return getValue(inputLastNameNewEmployee);
+    }
+
+    public void clickCheckBoxCreateDetailsLogin() {
+        clickWithJs(cbCreateDetailsLogin);
+    }
+
+    public void writeUserName(String username) {
+        sendKeys(inputNewUserName, username, 10);
+    }
+
+    public void writePassWord(String password) {
+        sendKeys(inputNewPassWord, password);
+    }
+
+    public void writeConfirmPassWord(String password) {
+        sendKeys(inputConfirmPassWord, password);
     }
 }
