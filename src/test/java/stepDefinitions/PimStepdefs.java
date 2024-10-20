@@ -44,4 +44,16 @@ public class PimStepdefs {
         steps().pimSteps().validateEmployeeId();
         screenShot();
     }
+
+    @And("habilito crear los detalles de login")
+    public void habilitoCrearLosDetallesDeLogin() {
+        steps().pimSteps().checkCreateDetailsLogin();
+        screenShot();
+    }
+
+    @And("completo los detalles del login")
+    public void completoLosDetallesDelLogin(DataTable dataTable) {
+        steps().pimSteps().writeDetailsLogin(dataTable);
+        screenShot();
+    }
 }
