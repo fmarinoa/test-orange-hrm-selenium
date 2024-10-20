@@ -12,7 +12,8 @@ public class PagesControllerTest {
                 new BasePage(),
                 new LoginPage(),
                 new HomePage(),
-                new PimPage()
+                new PimPage(),
+                new LogoutPage()
         );
     }
 
@@ -46,5 +47,13 @@ public class PagesControllerTest {
         PimPage pimPage2 = pagesController.pimPage();
         Assertions.assertNotNull(pimPage1, "PimPage no debe ser null");
         Assertions.assertSame(pimPage1, pimPage2, "El método pimPage debe retornar la misma instancia");
+    }
+
+    @Test
+    void testLogoutPageInstance() {
+        LogoutPage logoutPage1 = pagesController.logoutPage();
+        LogoutPage logoutPage2 = pagesController.logoutPage();
+        Assertions.assertNotNull(logoutPage1, "LogoutPage no debe ser null");
+        Assertions.assertSame(logoutPage1, logoutPage2, "El método logoutPage debe retornar la misma instancia");
     }
 }

@@ -6,19 +6,22 @@ public class PagesController {
     private final LoginPage loginPage;
     private final HomePage homePage;
     private final PimPage pimPage;
+    private final LogoutPage logoutPage;
 
     private PagesController() {
         this.basePage = new BasePage();
         this.loginPage = new LoginPage();
         this.homePage = new HomePage();
         this.pimPage = new PimPage();
+        this.logoutPage = new LogoutPage();
     }
 
-    PagesController(BasePage basePage, LoginPage loginPage, HomePage homePage, PimPage pimPage) {
-        this.basePage = new BasePage();
-        this.loginPage = new LoginPage();
-        this.homePage = new HomePage();
-        this.pimPage = new PimPage();
+    PagesController(BasePage basePage, LoginPage loginPage, HomePage homePage, PimPage pimPage, LogoutPage logoutPage) {
+        this.basePage = basePage;
+        this.loginPage = loginPage;
+        this.homePage = homePage;
+        this.pimPage = pimPage;
+        this.logoutPage = logoutPage;
     }
 
     public static PagesController pages() {
@@ -40,5 +43,9 @@ public class PagesController {
 
     public PimPage pimPage() {
         return pimPage;
+    }
+
+    public LogoutPage logoutPage() {
+        return logoutPage;
     }
 }
