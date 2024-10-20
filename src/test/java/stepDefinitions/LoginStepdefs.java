@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static hooks.Hooks.screenShot;
+import static models.ModelsController.models;
 import static steps.StepsController.steps;
 
 public class LoginStepdefs {
@@ -43,5 +44,20 @@ public class LoginStepdefs {
     public void escriboLaContraseña() {
         steps().loginSteps().writeHidePassword();
         screenShot();
+    }
+
+    @Then("valido encontarme en el formulario de inciar sesión")
+    public void validoEncontarmeEnElFormularioDeInciarSesión() {
+        steps().loginSteps().waitContentFormLogin();
+        screenShot();
+    }
+
+    @And("inicio sesión con el usuario creado para el empleado")
+    public void inicioSesiónConElUsuarioCreadoParaElEmpleado() {
+        steps().loginSteps().writeUsername(models().employee().getUsername());
+        screenShot();
+        steps().loginSteps().writePassword(models().employee().getPassword());
+        screenShot();
+        steps().loginSteps().clickLogin();
     }
 }

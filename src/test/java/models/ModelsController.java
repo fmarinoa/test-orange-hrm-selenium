@@ -8,6 +8,10 @@ public class ModelsController {
         this.employee = new Employee();
     }
 
+    ModelsController(Employee employee) {
+        this.employee = employee;
+    }
+
     public static ModelsController models() {
         if (instance == null) instance = new ModelsController();
         return instance;

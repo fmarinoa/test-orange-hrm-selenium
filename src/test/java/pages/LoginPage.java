@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 import static driverManager.DriverManager.getDriver;
+import static utils.Waits.WaitUtil.waitElementIsVisibility;
 import static utils.Waits.WaitUtil.waitLocatorsAreVisibilityAndReturnInWebElements;
 
 public class LoginPage extends BasePage {
@@ -20,6 +21,9 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//button[@type='submit']")
     protected WebElement btnLogin;
+
+    @FindBy(className = "orangehrm-login-slot")
+    protected WebElement formLogin;
 
     // Inicializa los elementos
     public LoginPage() {
@@ -40,5 +44,9 @@ public class LoginPage extends BasePage {
 
     public List<WebElement> waitMsgError(String xPathMsgError) {
         return waitLocatorsAreVisibilityAndReturnInWebElements(By.xpath(xPathMsgError), 10);
+    }
+
+    public void waitContentFormLogin() {
+        waitElementIsVisibility(formLogin, 20);
     }
 }

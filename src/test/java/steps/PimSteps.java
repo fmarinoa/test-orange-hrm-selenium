@@ -89,4 +89,24 @@ public class PimSteps {
         assertEquals(expectedName, currentName, "El apellido actual no coincide con el esperado");
         LoggerUtil.logInfo("Apellido validado: " + expectedName);
     }
+
+    public void checkCreateDetailsLogin() {
+        pages().pimPage().clickCheckBoxCreateDetailsLogin();
+        LoggerUtil.logInfo("Habilité el check box Create Details Login");
+    }
+
+    public void writeDetailsLogin(DataTable dataTable) {
+        LoggerUtil.logInfo("Llenando los datos del nuevo login");
+
+        models().employee().setUsername(getValueFromTable(dataTable, "Username"));
+        pages().pimPage().writeUserName(models().employee().getUsername());
+        LoggerUtil.logInfo("Escribí cómo nuevo usuario: " + models().employee().getUsername());
+
+        models().employee().setPassword(getValueFromTable(dataTable, "Password"));
+        pages().pimPage().writePassWord(models().employee().getPassword());
+        LoggerUtil.logInfo("Escribí cómo nueva contraseña: " + models().employee().getPassword());
+
+        pages().pimPage().writeConfirmPassWord(models().employee().getPassword());
+        LoggerUtil.logInfo("Confirmé la nueva contraseña: " + models().employee().getPassword());
+    }
 }
