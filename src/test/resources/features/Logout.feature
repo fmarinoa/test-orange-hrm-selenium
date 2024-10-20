@@ -10,7 +10,8 @@ Feature: Login and Logout in application
     And escribo la contraseña
     And presiono el botón de inciar sesión
     Then valido haber iniciado sesión correctamente
-    And cierro sesión
+    When cierro sesión
+    Then valido encontarme en el formulario de inciar sesión
     Examples:
       | user  |
       | Admin |

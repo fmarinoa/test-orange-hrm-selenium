@@ -50,4 +50,9 @@ public class LoginSteps {
         pages().loginPage().writePassword(password);
         LoggerUtil.logInfo("Escribí la contraseña: " + password);
     }
+
+    public void waitContentFormLogin() {
+        pages().loginPage().waitContentFormLogin();
+        LoggerUtil.logInfo("Estoy en el formulario de Login");
+    }
 }
