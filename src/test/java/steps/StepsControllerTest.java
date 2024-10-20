@@ -11,7 +11,8 @@ public class StepsControllerTest {
         stepsController = new StepsController(
                 new LoginSteps(),
                 new HomeSteps(),
-                new PimSteps()
+                new PimSteps(),
+                new LogoutSteps()
         );
     }
 
@@ -37,5 +38,13 @@ public class StepsControllerTest {
         PimSteps pimSteps2 = stepsController.pimSteps();
         Assertions.assertNotNull(pimSteps1, "PimSteps no debe ser null");
         Assertions.assertSame(pimSteps1, pimSteps2, "El método pimSteps debe retornar la misma instancia");
+    }
+
+    @Test
+    void testLogoutStepsInstance() {
+        LogoutSteps logoutSteps1 = stepsController.logoutSteps();
+        LogoutSteps logoutSteps2 = stepsController.logoutSteps();
+        Assertions.assertNotNull(logoutSteps1, "LogoutSteps no debe ser null");
+        Assertions.assertSame(logoutSteps1, logoutSteps2, "El método logoutSteps debe retornar la misma instancia");
     }
 }

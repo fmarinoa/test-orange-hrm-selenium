@@ -44,4 +44,10 @@ public class LoginStepdefs {
         steps().loginSteps().writeHidePassword();
         screenShot();
     }
+
+    @Then("valido encontarme en el formulario de inciar sesión")
+    public void validoEncontarmeEnElFormularioDeInciarSesión() {
+        steps().loginSteps().waitContentFormLogin();
+        screenShot();
+    }
 }
