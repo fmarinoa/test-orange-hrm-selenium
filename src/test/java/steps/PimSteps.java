@@ -5,6 +5,7 @@ import utils.Logger.LoggerUtil;
 
 import static models.ModelsController.models;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pages.PagesController.pages;
 import static utils.Datatable.DatatableUtil.getValueFromTable;
 import static utils.Waits.WaitUtil.waitForSeconds;
@@ -137,5 +138,10 @@ public class PimSteps {
     public void scrollToTableEmployeeList() {
         pages().pimPage().scrollToTableEmployeeList();
         LoggerUtil.logInfo("Me desplacé hasta la tabla del listado de empleados");
+    }
+
+    public void validateEmployeeIdInTableEmployeeList(String employeeId) {
+        String currentEmployeeId = pages().pimPage().getEmployeeIdInTableEmployeeList();
+        assertTrue(currentEmployeeId.contains(employeeId), employeeId + " no se encuentra en el Id del cliente de la prinera fila en el listado de empleados");
     }
 }

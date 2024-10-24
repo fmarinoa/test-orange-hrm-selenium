@@ -69,6 +69,9 @@ public class PimPage extends BasePage {
     @FindBy(xpath = "//button[text()=' Search ']")
     protected WebElement btnSearch;
 
+    @FindBy(xpath = "//div[@class='oxd-table-cell oxd-padding-cell'][2]/div")
+    protected WebElement textEmployeeIdInTableEmployeeList;
+
     // Inicializa los elementos
     public PimPage() {
         PageFactory.initElements(getDriver(), this);
@@ -158,5 +161,9 @@ public class PimPage extends BasePage {
 
     public void clickBtnSearch() {
         click(btnSearch);
+    }
+
+    public String getEmployeeIdInTableEmployeeList() {
+        return getText(textEmployeeIdInTableEmployeeList);
     }
 }
