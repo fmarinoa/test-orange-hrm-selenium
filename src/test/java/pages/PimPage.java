@@ -4,9 +4,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 import static driverManager.DriverManager.getDriver;
 import static utils.Scroll.ScrollUtil.scrollToElement;
-import static utils.Waits.WaitUtil.waitElementIsClickable;
 import static utils.Waits.WaitUtil.waitElementIsVisibility;
 
 public class PimPage extends BasePage {
@@ -55,6 +56,21 @@ public class PimPage extends BasePage {
 
     @FindBy(xpath = "//label[text()='Confirm Password']/../../div[2]/input")
     protected WebElement inputConfirmPassWord;
+
+    @FindBy(xpath = "//label[text()='Employee Id']/../../div[2]/input")
+    protected WebElement inputEmployeeId;
+
+    @FindBy(className = "oxd-table-card")
+    protected List<WebElement> rowsTableFindEmployee;
+
+    @FindBy(xpath = "//*[@class='oxd-table orangehrm-employee-list']")
+    protected WebElement tableEmployeeList;
+
+    @FindBy(xpath = "//button[text()=' Search ']")
+    protected WebElement btnSearch;
+
+    @FindBy(xpath = "//div[@class='oxd-table-cell oxd-padding-cell'][2]/div")
+    protected WebElement textEmployeeIdInTableEmployeeList;
 
     // Inicializa los elementos
     public PimPage() {
@@ -129,5 +145,25 @@ public class PimPage extends BasePage {
 
     public void writeConfirmPassWord(String password) {
         sendKeys(inputConfirmPassWord, password);
+    }
+
+    public void writeEmployeeId(String id) {
+        sendKeys(inputEmployeeId, id);
+    }
+
+    public int getSizeRows() {
+        return rowsTableFindEmployee.size();
+    }
+
+    public void scrollToTableEmployeeList() {
+        scrollToElement(tableEmployeeList);
+    }
+
+    public void clickBtnSearch() {
+        click(btnSearch);
+    }
+
+    public String getEmployeeIdInTableEmployeeList() {
+        return getText(textEmployeeIdInTableEmployeeList);
     }
 }
