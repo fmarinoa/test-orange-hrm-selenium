@@ -5,8 +5,10 @@ import utils.Logger.LoggerUtil;
 
 import static models.ModelsController.models;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pages.PagesController.pages;
 import static utils.Datatable.DatatableUtil.getValueFromTable;
+import static utils.Waits.WaitUtil.waitForSeconds;
 
 public class PimSteps {
 
@@ -108,5 +110,38 @@ public class PimSteps {
 
         pages().pimPage().writeConfirmPassWord(models().employee().getPassword());
         LoggerUtil.logInfo("Confirmé la nueva contraseña: " + models().employee().getPassword());
+    }
+
+    public void writeEmployeeId(String employeeId) {
+        models().employee().setId(employeeId);
+        pages().pimPage().writeEmployeeId(employeeId);
+        LoggerUtil.logInfo("Escribí el id de empleado: " + employeeId);
+        pages().pimPage().clickBtnSearch();
+        LoggerUtil.logInfo("Presioné el botón Search");
+    }
+
+    public void waitContentExactlyRows(int expectedRows) {
+        final int ATTEMPTS_MAX = 5;
+
+        for (int i = 0; i < ATTEMPTS_MAX; i++) {
+            int currentRows = pages().pimPage().getSizeRows();
+            if (currentRows == expectedRows) {
+                LoggerUtil.logInfo("Se encontró la cantidad de filas esperadas en la lista de empleados: " + expectedRows);
+                return;
+            }
+            waitForSeconds(1);
+        }
+
+        throw new RuntimeException("El listado de empleado no tuvo un solo resultado luego de " + ATTEMPTS_MAX + " intentos");
+    }
+
+    public void scrollToTableEmployeeList() {
+        pages().pimPage().scrollToTableEmployeeList();
+        LoggerUtil.logInfo("Me desplacé hasta la tabla del listado de empleados");
+    }
+
+    public void validateEmployeeIdInTableEmployeeList(String employeeId) {
+        String currentEmployeeId = pages().pimPage().getEmployeeIdInTableEmployeeList();
+        assertTrue(currentEmployeeId.contains(employeeId), employeeId + " no se encuentra en el Id del cliente de la prinera fila en el listado de empleados");
     }
 }
