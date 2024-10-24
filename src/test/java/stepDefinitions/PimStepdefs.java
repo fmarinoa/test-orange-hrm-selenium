@@ -68,4 +68,10 @@ public class PimStepdefs {
         steps().pimSteps().waitContentExactlyRows(expectedRows);
         steps().pimSteps().scrollToTableEmployeeList();
     }
+
+    @And("valido que el ID del empleado en la listado de empleados sea {string}")
+    public void validoQueElIDDelEmpleadoEnLaListadoDeEmpleadosSea(String employeeId) {
+        steps().pimSteps().validateEmployeeIdInTableEmployeeList(employeeId);
+        screenShot();
+    }
 }
