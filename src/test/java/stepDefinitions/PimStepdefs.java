@@ -56,4 +56,16 @@ public class PimStepdefs {
         steps().pimSteps().writeDetailsLogin(dataTable);
         screenShot();
     }
+
+    @When("busco al empleado con ID {string}")
+    public void buscoAlEmpleadoConID(String employeeId) {
+        steps().pimSteps().writeEmployeeId(employeeId);
+        screenShot();
+    }
+
+    @Then("valido que haya <{int}> resultado\\(s) en el listado de empleados")
+    public void validoQueHayaResultadoSEnElListadoDeEmpleados(int expectedRows) {
+        steps().pimSteps().waitContentExactlyRows(expectedRows);
+        steps().pimSteps().scrollToTableEmployeeList();
+    }
 }
